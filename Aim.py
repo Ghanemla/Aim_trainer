@@ -18,6 +18,8 @@ BG_COLOR = (0, 25, 40)
 LIVES = 3
 BAR_HEIGHT = 50
 
+LABEL_FONT = pygame.font.SysFont("comicsans", 24)
+
 class Target():
     MAX_SIZE = 50
     GROWTH_RATE = 0.5
@@ -57,9 +59,16 @@ def draw(win, targets):
          target.draw(win)
      pygame.display.update()
 
+def format_time(secs):
+    milli = math.floor(int(secs * 1000 % 1000)/ 100)
+    seconds = int(round(secs % 60, 1))
+    minutes = int(secs // 60)
+
+    return f"{minutes:02d}:{seconds:02d}.{milli}"
 
 def draw_bar(win, elapsed_time, targets_pressed, misses):
     pygame.draw.rect(win "white", (0,0, WIDTH, BAR_HEIGHT))
+    time_label = LABEL_FONT.render("", 1,"black")
 
 def main():
     run = True
